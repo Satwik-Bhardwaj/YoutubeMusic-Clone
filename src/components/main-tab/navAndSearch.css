@@ -1,0 +1,233 @@
+@media screen and (min-width: 768px) {
+
+a, li, p, h1, h2, h3, h4, h5{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: inherit;
+}
+header{
+    /* background-color: var(--theme-color-3); */
+    width: 100%;
+    height: 60px;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    padding: 0px 20px;
+    box-shadow: 5px 5px 5px #00000022;
+    user-select: none;
+    z-index: 99;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav div,li, p{
+    font-weight: 600;
+}
+
+.site-logo{
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-items{
+    list-style: none;
+    display: flex;
+}
+
+.item{
+    display: inline-block;
+    color: var(--theme-color-4);
+}
+
+/* property keeping hide icons in laptop screen */
+.item>div>span{
+    display: none;
+}
+
+.item div{
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+}
+.item div:hover{
+    color: #fff
+}
+.selected-item{
+    color: var(--theme-color-1);
+}
+.search-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* this is keeping search icon   */
+#search-sec>span{
+    display: block;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+  padding: 0px 10px 0px 0px;
+}
+#search-screen{
+    width: 50%;
+}
+}
+
+@media screen and (max-width:768px) {
+
+    div, li, p, h1, h2, h3, h4, h5{
+        font-family: 'Roboto', sans-serif;
+        text-decoration: none;
+        color: inherit;
+    }
+    header{
+        width: 100%;
+        height: 60px;
+        display: inline-block;
+        position: fixed;
+        padding: 0px 20px;
+        box-shadow: 5px -5px 5px #00000022;
+        user-select: none;
+        z-index: 99;
+    }
+    nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    nav div,li, p{
+        font-weight: 600;
+    }
+    
+    .site-logo{
+        display: none;
+        height: 60px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .nav-items{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .item{
+        display: inline-block;
+        color: var(--theme-color-4);
+    }
+    
+    /* property keeping hide icons in laptop screen */
+    .item>div>label{
+        display: none;
+    }
+    
+    .item div{
+        display: flex;
+        height: 60px;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 20px;
+    }
+    .item div:hover{
+        color: #000
+    }
+    .selected-item{
+        color: var(--theme-color-1);
+    }
+    .search-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48;
+      padding: 5px;
+    }
+    .account-sec{
+        display: none;
+    }
+
+    #search-screen{
+        width: 100%;
+    }
+}
+
+/* search-screen */
+.inactive{
+    display: none;
+}
+.active{
+    display: flex;
+}
+
+#search-screen{
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    height: auto;
+    margin: 10px 0px 0px 0px;
+    z-index: 99;
+    margin-left: auto;
+    margin-right: auto;
+}
+.search-box{
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+    border: 1px #707070 solid;
+}
+.recent-searches-sec{
+    list-style-type: none;
+    padding: 10px 0px;
+    width: 100%;
+    background-color: white;
+    border: 1px #707070 solid;
+}
+.searched-item{
+    display: grid;
+    grid-template-columns: 30px auto 30px; 
+    grid-gap: 5px;
+    align-items: center;
+    padding: 0px 10px;
+    height: 50px;
+}
+
+.searched-item-text{
+    text-align: left;
+}
+
+.searched-item:hover{
+    background-color: var(--theme-color-5);
+}
+
+.search-item-del{
+    padding: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+    outline: none;
+}

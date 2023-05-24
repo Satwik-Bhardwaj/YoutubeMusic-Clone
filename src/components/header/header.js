@@ -1,14 +1,32 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import "./header.css";
 import SearchBox from "./Searchbox/searchbox";
 
 function Header() {
 
   const [openSearch, setOpenSearch] = useState(false);
+
+  const [isScrolled, setIsScrolled] = useState(false);
   
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the page is scrolled beyond the top position
+      const scrolled = window.scrollY > 0;
+      setIsScrolled(scrolled);
+    };
+
+    // Attach the scroll event listener to the window
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isScrolled]);
+
   return (
     <>
-      <header id="header-prime">
+      <header id="header-prime" style={isScrolled?{backgroundColor:'black'}:{}}>
         <nav>
           <div className="site-logo">
             <p>Satwik</p>
