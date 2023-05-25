@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
-import "./header.css";
 import SearchBox from "./Searchbox/searchbox";
-
+import "./header.css";
+import avatar from "./avatar.jpg";
 function Header() {
 
   const [openSearch, setOpenSearch] = useState(false);
@@ -58,7 +58,9 @@ function Header() {
             </li>
           </ul>
           <div className="account-sec">
-            <span className="material-symbols-outlined">account_circle</span>
+            <span className="account-btn">
+              <img src={avatar} className="account-dp" />
+            </span>
           </div>
         </nav>
       </header>
