@@ -68,8 +68,7 @@
     transition: 0.5s opacity;
     opacity: 0;
 
-    box-shadow: 0px 40px 40px 0px var(--theme-color-4) inset,
-                0px -40px 40px 0px var(--theme-color-4) inset;
+    background-color: rgba(0, 0, 0, 0.588);
 }
 
 .w-card .poster-hover .material-symbols-outlined{
@@ -118,6 +117,7 @@
     display: grid;
     row-gap: 2px;
     overflow: hidden;
+    text-align: left;
 }
 
 .w-card .card-title{
