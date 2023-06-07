@@ -11,6 +11,7 @@ function App() {
       <Hometab/>
       <AccountContextMenu/>
     </div>
+    // this is a temp line for commit checks
   );
 }
 
