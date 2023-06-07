@@ -11,7 +11,6 @@ function App() {
       <Hometab/>
       <AccountContextMenu/>
     </div>
-    // this is temp
   );
 }
 
