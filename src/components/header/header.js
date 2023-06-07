@@ -1,14 +1,32 @@
-import React, {useState} from "react";
-import "./header.css";
+import React, {useState, useRef, useEffect} from "react";
 import SearchBox from "./Searchbox/searchbox";
-
+import "./header.css";
+import avatar from "./avatar.jpg";
 function Header() {
 
   const [openSearch, setOpenSearch] = useState(false);
+
+  const [isScrolled, setIsScrolled] = useState(false);
   
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the page is scrolled beyond the top position
+      const scrolled = window.scrollY > 0;
+      setIsScrolled(scrolled);
+    };
+
+    // Attach the scroll event listener to the window
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isScrolled]);
+
   return (
     <>
-      <header id="header-prime">
+      <header id="header-prime" style={isScrolled?{backgroundColor:'black'}:{}}>
         <nav>
           <div className="site-logo">
             <p>Satwik</p>
@@ -40,7 +58,9 @@ function Header() {
             </li>
           </ul>
           <div className="account-sec">
-            <span className="material-symbols-outlined">account_circle</span>
+            <span className="account-btn">
+              <img src={avatar} className="account-dp" />
+            </span>
           </div>
         </nav>
       </header>

@@ -1,0 +1,26 @@
+.chips-sec{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.chips-sec::-webkit-scrollbar{
+    display: none;
+}
+.a-chip{
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--theme-color-4-trans);
+    color: var(--theme-color-2);
+    backdrop-filter: blur(4px);
+    border: 1px var(--theme-color-4) solid;
+    border-radius: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+.a-chip:hover{
+    color: var(--theme-color-5);
+    background-color: var(--theme-color-4);
+}

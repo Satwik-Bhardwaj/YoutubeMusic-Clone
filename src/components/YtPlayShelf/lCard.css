@@ -1,0 +1,174 @@
+.longcards-list{
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-auto-flow: column;
+    grid-gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px 0px;
+}
+
+.longcards-list::-webkit-scrollbar{
+    display: none;
+}
+
+.l-card{
+    display: inline-block;
+    height: 70px;
+    width: 500px;
+    cursor: pointer;
+}
+
+.l-card-insides{
+    height: inherit;
+    width: inherit;
+    display: grid;
+    grid-template-columns: 70px 290px auto;
+    grid-template-rows: auto;
+}
+
+.l-card a{
+    text-decoration: none;
+}
+.l-card a:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.l-card .card-poster{
+    grid-row: 1;
+    grid-column: 1;
+
+    position: relative;
+    height: inherit;
+    width: 70px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.l-card .card-poster>img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: inherit;
+    width: inherit;
+    object-fit: fit;
+
+    z-index: 1;
+}
+
+.l-card .poster-hover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: inherit;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    transition: 0.5s opacity;
+    background-color: rgba(0, 0, 0, 0.588);
+
+    z-index: 2;
+}
+
+.l-card .poster-hover .material-symbols-outlined{
+    color: var(--theme-color-5);
+}
+
+
+.l-card .play-pause-button span{
+    font-size: 50px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.l-card .card-abouts{
+    grid-row: 1;
+    grid-column: 2;
+
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    
+    text-align: left;
+}
+
+.l-card a, p{
+    word-wrap: break-word; /* Allow word wrapping */
+    white-space: normal;
+    overflow: hidden;
+}
+
+.l-card .card-title{
+    display: inline-block;
+    margin-bottom: 8px;
+    max-height: 35px;
+    font-weight: 700;
+    color: var(--theme-color-2);
+}
+
+.l-card .card-album{
+    display: inline-block;
+    max-height: 35px;
+    color: var(--theme-color-4);
+    font-weight: 400;
+}
+
+.l-card .additional-btns{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    
+    color: var(--theme-color-2);
+}
+
+.l-card .functionality-btn{
+    display: flex;
+    height: 70px;
+    width: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+.l-card .button-to-like{
+    margin: 10px;
+    height:40px;
+    width: 40px; 
+}
+.l-card .button-to-like:hover{
+    background-color: #ffffff33;
+    border-radius: 100%;
+}
+.l-card .button-to-like span{
+    font-size: 30px;
+    line-height: 40px;
+    height: inherit;
+    width: inherit;
+}
+
+.l-card .more-option-button{
+    margin: 10px;
+    height:40px;
+    width: 40px;
+}
+
+.l-card .more-option-button:hover{
+    background-color: #ffffff33;
+    border-radius: 100%;
+}
+
+.l-card .more-option-button span{
+    font-size: 30px;
+    line-height: 40px;
+    height: inherit;
+    width: inherit;
+}
+
+.l-card:hover .poster-hover{
+    opacity: 1;    
+}
