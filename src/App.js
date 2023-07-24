@@ -26,15 +26,15 @@ function App() {
       break;
 
     case "explore-tab":
-      TabTag = <Exploretab/>
+      // TabTag = <Exploretab/>
       break;
 
     case "library-tab":
-      TabTag = <Librarytab/>
+      // TabTag = <Librarytab/>
       break;
 
     case "search-tab":
-      TabTag = <Searchtab/>
+      // TabTag = <Searchtab/>
       break;
   
     default:
