@@ -1,7 +1,7 @@
 .AcContxtMenu{
     position: fixed;
-    top: 10px;
-    left: 120px;    
+    top:50px;
+    right:50px;
     min-height: 100px;
     min-width: 300px;
     max-height: 90vh;
@@ -100,6 +100,5 @@
 }
 
 .AcContxtMenu .menubtn:hover{
-    background-color: white;
-    color: var(--theme-optionlist-1);
+    background-color: rgba(241, 241, 241, 0.159);
 }

@@ -40,19 +40,21 @@ a, li, p, h1, h2, h3, h4, h5{
     justify-content: center;
     align-items: center;
     margin-left: 10px;
-    height: 50px;
-    border-radius: 25px;
-    /* background-color: var(--theme-color-4-trans); */
+    height: 35px;
+    border-radius: 20px;
     color: var(--theme-color-2);
     border: 1px var(--theme-color-4) solid;
 }
 
 .navigator-chips{
-    width: 50px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
 }
 
 .more-finder{
-    width: 100px;
+    width: 70px;
+    cursor: pointer;
 }
 
 .more-chip-btn:hover{
@@ -60,39 +62,17 @@ a, li, p, h1, h2, h3, h4, h5{
     background-color: var(--theme-color-4);
 }
 
-.more-chip-btn span, label{
+.more-chip-btn span{
     padding: 10px;
     text-align: center;
 }
 
-.more-chip-btn span{
-    width: 50px;
-}
-
-
 .head-written{
     display: grid;
-    column-gap: 10px;
     color: var(--theme-color-2);
     text-align: left;
 }
 
-
-.head-img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70px;
-    width: 70px;
-
-    grid-column: 1;
-    grid-row-start: 1;
-    grid-row-end: 3;
-}
-.head-img img{
-    height: inherit;
-    width: inherit; 
-}
 .sec-heading{
     font-family: 'Roboto', sans-serif;
     grid-row: 1;
@@ -119,24 +99,7 @@ a, li, p, h1, h2, h3, h4, h5{
     
     .head-written{
         display: grid;
-        column-gap: 10px;
         color: var(--theme-color-2);
-    }
-    
-    .head-img{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 70px;
-        width: 70px;
-    
-        grid-column: 1;
-        grid-row-start: 1;
-        grid-row-end: 3;
-    }
-    .head-img img{
-        height: inherit;
-        width: inherit; 
     }
     .sec-heading{
         font-family: 'Roboto', sans-serif;

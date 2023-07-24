@@ -1,12 +1,16 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef, useEffect, useContext} from "react";
 import SearchBox from "./Searchbox/searchbox";
 import "./header.css";
 import avatar from "./avatar.jpg";
+import { ContextMenusContext } from "./../../supercomponents/AccountContextMenu/ContextMenusContext";
+
 function Header() {
 
   const [openSearch, setOpenSearch] = useState(false);
 
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { myState, setMyState } = useContext(ContextMenusContext);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +28,15 @@ function Header() {
     };
   }, [isScrolled]);
 
+  
+
+  const handleButtonClick = () => {
+    setMyState(!myState);
+  };
+  
   return (
     <>
-      <header id="header-prime" style={isScrolled?{backgroundColor:'black'}:{}}>
+      <header id="header-prime" style={isScrolled?{backgroundColor:'black', borderBottom:'1px solid var(--theme-color-4)'}:{}}>
         <nav>
           <div className="site-logo">
             <p>Satwik</p>
@@ -57,7 +67,7 @@ function Header() {
               </div>
             </li>
           </ul>
-          <div className="account-sec">
+          <div className="account-sec"  onClick={handleButtonClick}>
             <span className="account-btn">
               <img src={avatar} className="account-dp" />
             </span>
