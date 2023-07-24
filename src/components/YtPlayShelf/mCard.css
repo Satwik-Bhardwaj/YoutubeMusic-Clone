@@ -50,6 +50,22 @@
     border-radius: 5px;
 }
 
+.m-card .play-pause-button{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    margin-left: -25px;
+    margin-top:-25px;
+    z-index: 3;
+}
+.m-card .play-pause-button span{
+    font-size: 50px;
+    width: inherit;
+    height: inherit;
+}
+
 .m-card .card-poster>img{
     top: 0;
     left: 0;
@@ -73,7 +89,7 @@
     background-color: rgba(0, 0, 0, 0.588);
 }
 
-.m-card .poster-hover .material-symbols-outlined{
+.m-card .material-symbols-outlined{
     color: var(--theme-color-5);
 }
 
@@ -95,21 +111,6 @@
 
 .m-card .more-option-button span{
     font-size: 30px;
-}
-
-.m-card .play-pause-button{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    height: 50px;
-    width: 50px;
-    margin-left: -25px;
-    margin-top:-25px;
-}
-.m-card .play-pause-button span{
-    font-size: 50px;
-    width: inherit;
-    height: inherit;
 }
 
 .m-card .card-abouts{

@@ -12,7 +12,10 @@
 
     --theme-shadow-1: #0c0c0c;
 
-    --theme-optionlist-1: #0b0b0b;
+    --theme-optionlist-1: #252525;
+
+
+    --nav-bar-height: 60px;
 }
 
 *{
@@ -40,4 +43,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'GRAD' 0,
+  'opsz' 48
 }

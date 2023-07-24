@@ -1,0 +1,8 @@
+.playerInterface{
+    position: fixed;
+    bottom: 0;
+    height: calc(100vh - var(--nav-bar-height));
+    width: 100vw;
+    background-color: rgba(15, 15, 15, 0.994);
+    z-index: 100;
+}
