@@ -2,7 +2,7 @@ import {useState, createContext, useCallback, useContext} from 'react';
 
 import './App.css';
 
-// import AppStateContextProvider from './AppStateContext/AppStateContextProvider.js';
+import AppStateContextProvider from './AppStateContext/AppStateContextProvider.js';
 
 import Header from './components/header/header.js'
 import Hometab from './components/main-tab/Hometab.js';
@@ -11,11 +11,9 @@ import Librarytab from './components/library-tab/Librarytab.js';
 import Searchtab from './components/search-tab/Searchtab.js';
 import AccountContextMenu from './supercomponents/AccountContextMenu/AccountContextMenu.js';
 
-import ContextMenusContextProvider from './supercomponents/AccountContextMenu/ContextMenusContextProvider.js';
 import PlayerOver from './components/PlayerOver/PlayerOver';
 
 function App() {
-  
 
   const [activeTab, setActiveTab] = useState("home-tab");
   let TabTag;
@@ -41,17 +39,16 @@ function App() {
       break;
   }
 
+
   return (
     <div className="App">
-      {/* <AppStateContextProvider> */}
-          <ContextMenusContextProvider>
-            <Header/>
-            {TabTag}
-            <AccountContextMenu/>
-          </ContextMenusContextProvider>
+      <AppStateContextProvider>
+          <Header/>
+          {TabTag}
+          <AccountContextMenu/>
+          <PlayerOver/>
           
-          {/* <PlayerOver/> */}
-        {/* </AppStateContextProvider> */}
+      </AppStateContextProvider>
     </div>
   );
 }

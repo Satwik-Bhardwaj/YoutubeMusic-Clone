@@ -2,12 +2,13 @@ import React, { useContext, useEffect } from "react";
 import "./AccountContextMenuStyle.css"
 import dp from "../../components/header/avatar.jpg"
 
-import { ContextMenusContext } from "./ContextMenusContext.js";
+import { AppStateContext } from "../../AppStateContext/AppStateContext.js";
 
 function AccountContextMenu({account_details}){
 
-    const { myState, setMyState } = useContext(ContextMenusContext);
-    if(myState){
+    const { appState } = useContext(AppStateContext);
+    const contextMenuState = appState.contextMenuOpened;
+    if(contextMenuState){
         return(
             <div className="AcContxtMenu">
                 
