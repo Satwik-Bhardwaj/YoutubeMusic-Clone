@@ -1,0 +1,179 @@
+@keyframes flowRightToLeft {
+  0% {
+    transform: translateX(100%); /* Starting position outside the container */
+  }
+  10%{
+      transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%); /* Ending position outside the container */
+  }
+}
+
+
+.playerNavBar {
+  background-image: linear-gradient(to top, var(--theme-color-3), #00000000);
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  height: var(--player-navbar-height);
+  width: var(--player-navbar-width);
+  z-index: 101;
+  user-select: none;
+}
+
+
+/* Styles for the navigation bar container */
+.playerNavBar .navbar-internal {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto auto;
+  grid-gap: 10px;
+  align-items: center;
+  height: var(--player-navbar-height);
+  width: 100%;
+  background-color: var(--theme-color-6);
+  color: var(--theme-color-6-fore);
+  padding: 0 10px;
+}
+
+/* Styles for the music poster and details section */
+.playerNavBar .music-poster {
+  display: flex;
+  align-items: center;
+}
+
+.playerNavBar .music-poster img {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.playerNavBar .music-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  text-align: left;
+  width: 150px;
+  max-width: 150px;
+}
+
+.playerNavBar .make-text-dynamic{
+  direction: rtl;
+}
+
+.playerNavBar .music-name,
+.playerNavBar .artist-name {
+  position: relative;
+  height: 20px;
+  width: 150px;
+  margin-bottom: 2px;
+  overflow: hidden;
+}
+
+.playerNavBar .music-name span, .playerNavBar  .artist-name span{
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.playerNavBar .slide-text{
+  animation: flowRightToLeft 10s linear infinite;
+}
+
+.playerNavBar .music-name {
+  position: relative;
+  font-weight: 600;
+}
+
+.playerNavBar .artist-name {
+  font-weight: 300;
+}
+
+/* Styles for the player control buttons */
+.playerNavBar .player-control-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Styles for the progress bar and time indicators */
+.playerNavBar .music-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.playerNavBar .progress-bar-container {
+  position: relative;
+  max-width: 200px;
+  min-width: 100px;
+  height: 3px;
+  background-color: var(--theme-color-6-fore-trans);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.playerNavBar .progress-bar {
+  position: relative;
+  height: 100%;
+  width: 50%;
+  background-color: var(--theme-color-6-fore);
+  border-radius: 10px;
+}
+
+.playerNavBar .dot {
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translate(0, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--theme-color-1);
+  border-radius: 50%;
+  display: none;
+  z-index: 104;
+}
+
+/* Show the dot on hover */
+.playerNavBar .progress-bar-container:hover .dot {
+  display: block;
+}  
+
+.playerNavBar .current-time,
+.playerNavBar .duration {
+  font-size: 12px;
+}
+
+.playerNavBar .liked-song-button .liked{
+  color: var(--theme-color-7-like);
+}
+/* Styles for the action buttons */
+.playerNavBar .liked-song-button,
+.playerNavBar .previous-button,
+.playerNavBar .play-pause-button,
+.playerNavBar .next-button,
+.playerNavBar .shuffle-button,
+.playerNavBar .queue-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff00;
+  color: var(--theme-color-6-fore);
+  border: none;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.playerNavBar .navbar-internal button:hover {
+  background-color: var(--theme-color-6-fore-trans);
+}
+
+.playerNavBar .previous-button,
+.playerNavBar .play-pause-button,
+.playerNavBar .next-button{
+  border: 2px solid var(--theme-color-6-fore-trans);
+}

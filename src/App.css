@@ -4,5 +4,5 @@
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  background: -webkit-radial-gradient(30vw -50vh, circle closest-corner, #1B1A0F 0%, #071519 30vw, rgb(0, 0, 0) 50vw);
+  background: -webkit-radial-gradient(30vw -20vh, circle closest-corner, #3f21ff 0%, #23007c 20vw, rgb(0, 0, 0) 50vw);
 }

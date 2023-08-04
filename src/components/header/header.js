@@ -37,7 +37,7 @@ function Header() {
   
   return (
     <>
-      <header id="header-prime" style={isScrolled?{backgroundColor:'black', borderBottom:'1px solid var(--theme-color-4)'}:{}}>
+      <header id="header-prime" style={isScrolled || appState.player.playerSlideOpen ?{backgroundColor:'black', borderBottom:'1px solid var(--theme-color-4)'}:{}}>
         <nav>
           <div className="site-logo">
             <p>Satwik</p>

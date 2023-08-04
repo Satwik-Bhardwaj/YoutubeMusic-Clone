@@ -14,11 +14,17 @@ const AppStateContextProvider = ({ children }) => {
       contextMenuOpened: false,
       tabOpened: "home",
       player: {
-          onPlay: false,
-          playNpause: "stop",
-          playerSlideOpen: false,
+          onPlay: true,
+          playNStop: true,
+          playerSlideOpen: true,
           musicLink: "NA",
-          musicPoster: "NA"
+          musicPoster: "NA",
+          playerTab: "up-next",
+          musicName: "Halka Halka",
+          artistName: "Rahat Fateh Ali Khan",
+          musicID: "232323212121-temp",
+          musicDuration: "4:03",
+          isFavorite: true
       }
     }
   );
