@@ -2,15 +2,15 @@ import React, {useState, useRef, useEffect, useContext} from "react";
 import SearchBox from "./Searchbox/searchbox";
 import "./header.css";
 import avatar from "./avatar.jpg";
-import { ContextMenusContext } from "./../../supercomponents/AccountContextMenu/ContextMenusContext";
 
+import { AppStateContext } from "../../AppStateContext/AppStateContext";
 function Header() {
 
   const [openSearch, setOpenSearch] = useState(false);
 
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const { myState, setMyState } = useContext(ContextMenusContext);
+  const { appState, setAppState } = useContext(AppStateContext);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -31,12 +31,13 @@ function Header() {
   
 
   const handleButtonClick = () => {
-    setMyState(!myState);
+    const contextMenuState = appState.contextMenuOpened;
+    setAppState({...appState, contextMenuOpened: !contextMenuState});
   };
   
   return (
     <>
-      <header id="header-prime" style={isScrolled?{backgroundColor:'black', borderBottom:'1px solid var(--theme-color-4)'}:{}}>
+      <header id="header-prime" style={isScrolled || appState.player.playerSlideOpen ?{backgroundColor:'black', borderBottom:'1px solid var(--theme-color-4)'}:{}}>
         <nav>
           <div className="site-logo">
             <p>Satwik</p>

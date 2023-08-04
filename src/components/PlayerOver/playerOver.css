@@ -1,8 +1,230 @@
+@keyframes flowRightToLeft {
+    0% {
+      transform: translateX(100%); /* Starting position outside the container */
+    }
+    10%{
+        transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%); /* Ending position outside the container */
+    }
+}
+
+@keyframes slide-in {
+    0% {
+      transform: translateY(100%); 
+    }
+    100% {
+      transform: translateY(0%); 
+    }
+}
+
+@keyframes slide-out {
+    0% {
+      transform: translateY(0%);
+    }
+    50%{
+        transform: translateY(100%);
+    }   
+    100% {
+      transform: translateY(200%);
+    }
+}
+.playerMusic{
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
+    text-align: left;
+}
+.playerMusic .MusicName{
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+}
+.playerMusic .MusicArtist{
+    overflow: hidden;
+    position: relative;
+    font-size: 14px;
+    height: 20px;
+    font-weight: 500;
+    color: var(--theme-color-4);
+}
+.dynamicTextCont{
+    direction: rtl;
+}
+
+.playerMusic .detailText{
+    margin: 0;
+    white-space: nowrap; 
+    position: absolute; 
+}
+
+.playerMusic .slideText{
+    animation: flowRightToLeft 10s linear infinite;
+}
+
+.playerControlBtns{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto auto auto;
+    height: auto;
+    width: auto;
+}
+
 .playerInterface{
+    background-color: var(--theme-color-3);
     position: fixed;
     bottom: 0;
-    height: calc(100vh - var(--nav-bar-height));
-    width: 100vw;
-    background-color: rgba(15, 15, 15, 0.994);
+    left: 0;
+    height: calc(100% - var(--nav-bar-height));
+    width: 100%;
     z-index: 100;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: calc(10px + var(--player-navbar-height));
+}
+
+.playerPanel{
+    background-color: green;
+    color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.playerPanel .playerPoster{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100%);
+    aspect-ratio: 1/1;
+    width: auto;
+    padding: 50px;
+    overflow: hidden;
+}
+.playerPanel .music-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.playerPanel .music-poster img {
+    width: 260px;
+    height: 260px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
+.playerPanel .music-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    text-align: left;
+}
+
+.playerPanel .music-name{
+    font-weight: 700;
+}
+.playerPanel .artist-name{
+    font-weight: 300;
+}
+
+.player-addition{
+    background-color: var(--theme-color-6);
+    color: white;
+    min-height: calc(100% - var(--player-navbar-height));
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.playerAddition .additionNavigation .btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--theme-color-4);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.playerAddition .additionNavigation .selected{
+    color: var(--theme-color-1);
+    border-bottom: 2px solid var(--theme-color-1);
+}
+
+.playerAddition .upNextTab{
+    height: inherit;
+    width: inherit; 
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.playerAddition .upNextTab .tabInternal{
+    display: inline-block;
+    height: auto;
+    width: 100%; 
+}
+
+.playerAddition .upNextTab .tabInternal .nextMusicOption{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid var(--theme-color-4);
+}
+
+.playerAddition .upNextTab .tabInternal .nextMusicOption .optionPoster{    
+    height: inherit;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+}
+.playerAddition .upNextTab .tabInternal .nextMusicOption .optionPoster img{
+    height: 46px;
+    width: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+.playerAddition .upNextTab .tabInternal .nextMusicOption .optionLabels{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-gap: 5px;
+    text-align: left;
+}
+.playerAddition .upNextTab .tabInternal .nextMusicOption .optionLabels .musicName{
+    align-self: end;
+    color: var(--theme-color-1);
+    font-weight: 600;
+}
+
+.playerAddition .upNextTab .tabInternal .nextMusicOption .artistName{
+    align-self: start;
+    color: var(--theme-color-4);
+    font-weight: 300;
+}
+
+.playerAddition .upNextTab .tabInternal .nextMusicOption .musicDuration{
+    align-self: center;
+    margin: 10px;
+    color: var(--theme-color-4);
 }

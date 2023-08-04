@@ -1,5 +1,5 @@
 /* default design */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Flex:opsz,wght@8..144,100;8..144,400;8..144,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 :root{
@@ -7,8 +7,12 @@
     --theme-color-2: #ffffff;
     --theme-color-3: #000000;
     --theme-color-4: #5f5f5f;
-    --theme-color-5: #d8d8d8;
     --theme-color-4-trans: #5f5f5f60;
+    --theme-color-5: #e4e4e4;
+    --theme-color-6: #111111;
+    --theme-color-6-fore: #c2c2c2;
+    --theme-color-6-fore-trans: #c2c2c248;
+    --theme-color-7-like: #0e93ff;
 
     --theme-shadow-1: #0c0c0c;
 
@@ -16,14 +20,18 @@
 
 
     --nav-bar-height: 60px;
+
+    --player-navbar-height: 80px;
+    --player-navbar-width: 100%;
 }
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Flex', sans-serif;
     /* outline: red 1px dashed; */
+    /* color: var(--theme-color-1); */
 }
 
 body {
@@ -32,8 +40,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 
-  min-width: 450px; 
-  /* background-color: var(--theme-color-3); */
+  min-width: 450px;
   width: 100%;
   height: 100%;
   -webkit-font-smoothing: antialiased;
