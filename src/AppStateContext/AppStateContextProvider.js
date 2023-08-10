@@ -29,6 +29,12 @@ const AppStateContextProvider = ({ children }) => {
           
           panelTab: "music",
           slideCloseClicking: null
+      },
+      router: {
+        currentComponent: "Hometab",
+        currentUrl: "/",
+        newComponent: "Hometab",
+        newUrl: "/"
       }
     }
   );

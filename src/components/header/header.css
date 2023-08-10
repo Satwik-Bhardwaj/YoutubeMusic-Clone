@@ -19,6 +19,10 @@ nav{
 nav div,li, p{
     font-weight: 600;
 }
+nav a{
+    text-decoration: none;
+    color: inherit;
+}
 
 .site-logo{
     margin-right: auto;
@@ -42,7 +46,7 @@ nav div,li, p{
 }
 
 /* property keeping hide icons in laptop screen */
-.item>div>span{
+.item div span{
     display: none;
 }
 
@@ -59,20 +63,6 @@ nav div,li, p{
 .selected-item{
     color: var(--theme-color-1);
 }
-/*
-.search-item{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-/* this is keeping search icon   */
-/* #search-sec>span{
-    display: block;
-}
-#search-screen{
-    width: 50%;
-} */
 
 .account-sec{
     margin-left: auto;
@@ -116,8 +106,6 @@ nav div,li, p{
         box-shadow: 5px -5px 5px #00000022;
     }
 
-    nav{}
-
     nav div,li, p{
         font-weight: 600;
     }
@@ -139,11 +127,11 @@ nav div,li, p{
         color: var(--theme-color-4);
     }
 
-    .item>div>span{
+    .item div span{
         display: block;
     }
     /* property keeping hide icons in laptop screen */
-    .item>div>label{
+    .item div label{
         display: none;
     }
 

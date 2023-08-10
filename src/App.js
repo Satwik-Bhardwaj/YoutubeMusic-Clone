@@ -1,56 +1,49 @@
-import {useState, createContext, useCallback, useContext} from 'react';
-
+import React from 'react';
+import { BrowserRouter as Router,Routes, Route, Link, useHistory } from 'react-router-dom';
 import './App.css';
 
-import AppStateContextProvider from './AppStateContext/AppStateContextProvider.js';
+const BackComponent = ({ name, to }) => (
+  <div className="back-component">
+    <h2>{name}</h2>
+    <Link to={to}>Open Pop-up</Link>
+  </div>
+);
 
-import Header from './components/header/header.js'
-import Hometab from './components/main-tab/Hometab.js';
-import Exploretab from './components/explore-tab/Exploretab.js';
-import Librarytab from './components/library-tab/Librarytab.js';
-import Searchtab from './components/search-tab/Searchtab.js';
-import AccountContextMenu from './supercomponents/AccountContextMenu/AccountContextMenu.js';
+const PopUpComponent = () => {
+  const history = useHistory();
 
-import PlayerOver from './components/PlayerOver/PlayerOver';
-
-function App() {
-
-  const [activeTab, setActiveTab] = useState("home-tab");
-  let TabTag;
-
-  switch (activeTab) {
-    case "home-tab":
-      TabTag = <Hometab/>
-      break;
-
-    case "explore-tab":
-      // TabTag = <Exploretab/>
-      break;
-
-    case "library-tab":
-      // TabTag = <Librarytab/>
-      break;
-
-    case "search-tab":
-      // TabTag = <Searchtab/>
-      break;
-  
-    default:
-      break;
-  }
-
+  const handleCancel = () => {
+    history.goBack();
+  };
 
   return (
-    <div className="App">
-      <AppStateContextProvider>
-          <Header/>
-          {TabTag}
-          <AccountContextMenu/>
-          <PlayerOver/>
-          
-      </AppStateContextProvider>
+    <div className="popup-overlay">
+      <div className="popup-content">
+        <h2>Pop-up Component</h2>
+        <button onClick={handleCancel}>Cancel</button>
+      </div>
     </div>
   );
-}
+};
+
+const App = () => (
+  <Router>
+    <Routes>
+    <Route path="/" exact component={Home} />
+    <Route path="/popup" component={PopUpComponent} />
+    <Route path="/back1" render={() => <BackComponent name="Back 1" to="/popup" />} />
+    <Route path="/back2" render={() => <BackComponent name="Back 2" to="/popup" />} />
+    <Route path="/back3" render={() => <BackComponent name="Back 3" to="/popup" />} />
+    </Routes>
+  </Router>
+);
+
+const Home = () => (
+  <div>
+    <BackComponent name="Back 1" to="/back1" />
+    <BackComponent name="Back 2" to="/back2" />
+    <BackComponent name="Back 3" to="/back3" />
+  </div>
+);
 
 export default App;

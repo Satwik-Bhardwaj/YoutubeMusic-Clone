@@ -1,4 +1,6 @@
 import React, {useState, useRef, useEffect, useContext} from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
 import SearchBox from "./Searchbox/searchbox";
 import "./header.css";
 import avatar from "./avatar.jpg";
@@ -44,22 +46,28 @@ function Header() {
           </div>
           <ul className="nav-items">
             <li className="item selected-item">
-              <div onClick="redirec('#')">
-                <span className="material-symbols-outlined">home</span>
-                <label>Home</label>
-              </div>
+              <Link to="/">
+                <div>
+                  <span className="material-symbols-outlined">home</span>
+                  <label>Home</label>
+                </div>
+              </Link>
             </li>
             <li className="item">
-              <div onClick="redirect('explore.html')">
-                <span className="material-symbols-outlined">explore</span>
-                <label>Explore</label>
-              </div>
+              <Link to="/explore">
+                <div>
+                  <span className="material-symbols-outlined">explore</span>
+                  <label>Explore</label>
+                </div>
+              </Link>
             </li>
             <li className="item">
-              <div href="#">
-                <span className="material-symbols-outlined">library_music</span>
-                <label>Library</label>
-              </div>
+              <Link to="library">
+                <div>
+                  <span className="material-symbols-outlined">library_music</span>
+                  <label>Library</label>
+                </div>
+              </Link>
             </li>
             <li className="item">
               <div href="#" id="search-sec" onClick={() => {setOpenSearch(true)}}>
