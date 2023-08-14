@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import { AppStateContext } from './AppStateContext';
 
@@ -16,7 +16,7 @@ const AppStateContextProvider = ({ children }) => {
       player: {
           onPlay: true,
           playNStop: true,
-          playerSlideOpen: true,
+          playerSlideOpen: false,
           musicLink: "NA",
           musicPoster: "NA",
           playerTab: "up-next",
@@ -24,7 +24,10 @@ const AppStateContextProvider = ({ children }) => {
           artistName: "Rahat Fateh Ali Khan",
           musicID: "232323212121-temp",
           musicDuration: "4:03",
-          isFavorite: true
+          isFavorite: true,
+          onShuffleMode: false,
+          
+          panelTab: "music",
       }
     }
   );

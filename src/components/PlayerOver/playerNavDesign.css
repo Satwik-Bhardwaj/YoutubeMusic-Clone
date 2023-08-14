@@ -38,10 +38,10 @@
   padding: 0 10px;
 }
 
-/* Styles for the music poster and details section */
 .playerNavBar .music-poster {
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .playerNavBar .music-poster img {
@@ -149,6 +149,10 @@
 .playerNavBar .liked-song-button .liked{
   color: var(--theme-color-7-like);
 }
+
+.playerNavBar .shuffle-button .onShuffle{
+  color: var(--theme-color-7-shuffle);
+}
 /* Styles for the action buttons */
 .playerNavBar .liked-song-button,
 .playerNavBar .previous-button,
@@ -176,4 +180,37 @@
 .playerNavBar .play-pause-button,
 .playerNavBar .next-button{
   border: 2px solid var(--theme-color-6-fore-trans);
+}
+
+@media screen and (max-width:768px) {
+  .playerNavBar {
+    background-image: linear-gradient(to top, var(--theme-color-3), #00000000);
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    height: var(--player-navbar-height);
+    width: var(--player-navbar-width);
+    z-index: 101;
+    user-select: none;
+  }
+  .playerNavBar .navbar-internal {
+    grid-template-columns: 1fr auto auto;
+  }
+  .playerNavBar .music-progress {
+    display: none;
+  }
+  .playerNavBar .previous-button,
+  .playerNavBar .next-button,
+  .playerNavBar .shuffle-button,
+  .playerNavBar .queue-button {
+    display: none;
+  }
+  .playerNavBar .music-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    text-align: left;
+  }
 }
