@@ -1,5 +1,5 @@
-import React, {useState, useRef, useEffect, useContext} from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React, {useState, useEffect, useContext} from "react";
+import { NavLink } from "react-router-dom";
 
 import SearchBox from "./Searchbox/searchbox";
 import "./header.css";
@@ -36,38 +36,37 @@ function Header() {
     const contextMenuState = appState.contextMenuOpened;
     setAppState({...appState, contextMenuOpened: !contextMenuState});
   };
-  
   return (
     <>
-      <header id="header-prime" style={isScrolled || appState.player.playerSlideOpen ?{backgroundColor:'black', borderBottom:'1px solid var(--theme-color-4)'}:{}}>
+      <header id="header-prime" style={isScrolled || appState.appearance.headerHighlighted ?{backgroundColor:'black', borderBottom:'1px solid var(--theme-color-4)'}:{}}>
         <nav>
           <div className="site-logo">
             <p>Satwik</p>
           </div>
           <ul className="nav-items">
-            <li className="item selected-item">
-              <Link to="/">
+            <li className="item">
+              <NavLink to="/" style={({isActive})=>{return{color: isActive ? 'white': ''}}}>
                 <div>
                   <span className="material-symbols-outlined">home</span>
                   <label>Home</label>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li className="item">
-              <Link to="/explore">
+              <NavLink to="/explore" style={({isActive})=>{return{color: isActive ? 'white': ''}}}>
                 <div>
                   <span className="material-symbols-outlined">explore</span>
                   <label>Explore</label>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li className="item">
-              <Link to="library">
+              <NavLink to="library" style={({isActive})=>{return{color: isActive ? 'white': ''}}}>
                 <div>
                   <span className="material-symbols-outlined">library_music</span>
                   <label>Library</label>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li className="item">
               <div href="#" id="search-sec" onClick={() => {setOpenSearch(true)}}>
@@ -78,7 +77,7 @@ function Header() {
           </ul>
           <div className="account-sec"  onClick={handleButtonClick}>
             <span className="account-btn">
-              <img src={avatar} className="account-dp" />
+              <img src={avatar} className="account-dp" alt="profile"/>
             </span>
           </div>
         </nav>

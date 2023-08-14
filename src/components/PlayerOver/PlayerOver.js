@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 
@@ -44,9 +44,32 @@ function PlayerInterface() {
         default :
             tab = (<MusicPanel/>);
     }
+    const location = useLocation();
 
+    const [elementStyle, setElementStyle] = useState({});
+
+    useEffect(() => {
+        // Check if the pathname matches the condition where you want to apply the style
+        if (location.pathname === '/w') {
+            // Update the style when the pathname matches
+            setElementStyle({
+            animation: "slide-in 0.2s linear",
+            visibility: "visible"
+            });
+        } else {
+            setElementStyle({
+            animation: "slide-out 0.4s linear",
+            });
+            setTimeout(() => {
+            setElementStyle({
+                visibility: "hidden",
+                });
+            }, 400);
+        }
+      }, [location.pathname === '/w']);
+      
     return (
-        <div className="playerInterface" style={{animation: slideCloseClicking ? "slide-out 0.4s linear" : "slide-in 0.2s linear"}}>
+        <div className="playerInterface" style={elementStyle}>
             {tab}
         </div>
     )
@@ -61,10 +84,7 @@ function PlayerOver(props) {
     
     if(appState.player.playNStop){    
         return(
-            <>
-                {appState.player.playerSlideOpen?<PlayerInterface/>:<></>}
-                
-            </>
+            <PlayerInterface/>
         )
     }
     

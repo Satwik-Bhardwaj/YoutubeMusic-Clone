@@ -1,8 +1,9 @@
 import React from "react";
 import './exploretab.css';
 
-function Exploretab(){
+import p1 from './../../temp/p1.jpg'
 
+function Exploretab(){
     return(
     <div className="explore">
         <div className="sec">
@@ -68,7 +69,143 @@ function Exploretab(){
                                     </span>
                                 </div>
                             </div>
-                            <img />
+                            <img src={p1} alt="poster"/>
+                        </div>
+                        <div className="card-abouts">
+                            <a className="card-title">Hello</a>
+                            <a className="card-album">Artist</a>
+                        </div>
+                        <div className="additional-btns">
+                            <div className="functionality-btn">
+                                <div className="button-to-like">
+                                    <span className="material-symbols-outlined">
+                                    favorite
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="functionality-btn">
+                                <div className="more-option-button" id="more-option-oncard">
+                                    <span className="material-symbols-outlined">
+                                    more_vert
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="l-card" id="l-card">
+                    <div className="l-card-insides">
+                        <div className="card-poster">
+                            <div class="poster-hover">
+                                <div class="play-pause-button">
+                                    <span class="material-symbols-outlined">
+                                        play_arrow
+                                    </span>
+                                </div>
+                            </div>
+                            <img src={p1} alt="poster"/>
+                        </div>
+                        <div className="card-abouts">
+                            <a className="card-title">Hello</a>
+                            <a className="card-album">Artist</a>
+                        </div>
+                        <div className="additional-btns">
+                            <div className="functionality-btn">
+                                <div className="button-to-like">
+                                    <span className="material-symbols-outlined">
+                                    favorite
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="functionality-btn">
+                                <div className="more-option-button" id="more-option-oncard">
+                                    <span className="material-symbols-outlined">
+                                    more_vert
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="l-card" id="l-card">
+                    <div className="l-card-insides">
+                        <div className="card-poster">
+                            <div class="poster-hover">
+                                <div class="play-pause-button">
+                                    <span class="material-symbols-outlined">
+                                        play_arrow
+                                    </span>
+                                </div>
+                            </div>
+                            <img src={p1} alt="poster"/>
+                        </div>
+                        <div className="card-abouts">
+                            <a className="card-title">Hello</a>
+                            <a className="card-album">Artist</a>
+                        </div>
+                        <div className="additional-btns">
+                            <div className="functionality-btn">
+                                <div className="button-to-like">
+                                    <span className="material-symbols-outlined">
+                                    favorite
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="functionality-btn">
+                                <div className="more-option-button" id="more-option-oncard">
+                                    <span className="material-symbols-outlined">
+                                    more_vert
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="l-card" id="l-card">
+                    <div className="l-card-insides">
+                        <div className="card-poster">
+                            <div class="poster-hover">
+                                <div class="play-pause-button">
+                                    <span class="material-symbols-outlined">
+                                        play_arrow
+                                    </span>
+                                </div>
+                            </div>
+                            <img src={p1} alt="poster"/>
+                        </div>
+                        <div className="card-abouts">
+                            <a className="card-title">Hello</a>
+                            <a className="card-album">Artist</a>
+                        </div>
+                        <div className="additional-btns">
+                            <div className="functionality-btn">
+                                <div className="button-to-like">
+                                    <span className="material-symbols-outlined">
+                                    favorite
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="functionality-btn">
+                                <div className="more-option-button" id="more-option-oncard">
+                                    <span className="material-symbols-outlined">
+                                    more_vert
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="l-card" id="l-card">
+                    <div className="l-card-insides">
+                        <div className="card-poster">
+                            <div class="poster-hover">
+                                <div class="play-pause-button">
+                                    <span class="material-symbols-outlined">
+                                        play_arrow
+                                    </span>
+                                </div>
+                            </div>
+                            <img src={p1} alt="poster"/>
                         </div>
                         <div className="card-abouts">
                             <a className="card-title">Hello</a>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation} from "react-router-dom";
 
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 
@@ -19,26 +19,17 @@ function PlayerNavigation(){
     const artistNameRef = useRef(null);
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const musicDetails = appState.player;
 
     const handlePlayerSlide = (event) => {
         if (event.target.closest('BUTTON') || event.target.closest('.music-progress')) return;
-        
-        const playerSlideState = appState.player.playerSlideOpen;
 
-
-        if(playerSlideState){
-            setAppState({...appState, player: {...appState.player, slideCloseClicking: true}});
-            setTimeout(() => {
-                
-                setAppState({...appState, player: {...appState.player, playerSlideOpen: !playerSlideState}})
-                navigate(-1);
-            }, 200);
+        if(location.pathname !== '/w'){
+            navigate('/w?ddd');
         }else{
-            navigate("/w?onPlay="+appState.player.musicID);
-            setAppState({...appState, player: {...appState.player, slideCloseClicking: false}});
-            setAppState({...appState, player: {...appState.player, playerSlideOpen: !playerSlideState}})
+            navigate(-1);
         }
     }
 
@@ -64,7 +55,6 @@ function PlayerNavigation(){
         setIsMusicTextOverflowing(musicNameRef.current.firstChild.scrollWidth > musicNameRef.current.offsetWidth);
         setIsArtistTextOverflowing(artistNameRef.current.firstChild.scrollWidth > artistNameRef.current.offsetWidth);
     }, []);
-
     
     return (
         <div className="playerNavBar">

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import { AppStateContext } from './AppStateContext';
 
@@ -28,13 +28,6 @@ const AppStateContextProvider = ({ children }) => {
           onShuffleMode: false,
           
           panelTab: "music",
-          slideCloseClicking: null
-      },
-      router: {
-        currentComponent: "Hometab",
-        currentUrl: "/",
-        newComponent: "Hometab",
-        newUrl: "/"
       }
     }
   );

@@ -1,49 +1,79 @@
-import React from 'react';
-import { BrowserRouter as Router,Routes, Route, Link, useHistory } from 'react-router-dom';
+import {useState, useContext, useEffect} from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+
 import './App.css';
 
-const BackComponent = ({ name, to }) => (
-  <div className="back-component">
-    <h2>{name}</h2>
-    <Link to={to}>Open Pop-up</Link>
-  </div>
-);
+import { AppStateContext } from './AppStateContext/AppStateContext';
 
-const PopUpComponent = () => {
-  const history = useHistory();
+import Header from './components/header/header.js'
+import Hometab from './components/main-tab/Hometab.js';
+import Exploretab from './components/explore-tab/Exploretab.js';
+import Librarytab from './components/library-tab/Librarytab.js';
+import Searchtab from './components/search-tab/Searchtab.js';
+import PlayerNavigation from './components/PlayerOver/PlayerNavigation';
+import AccountContextMenu from './supercomponents/AccountContextMenu/AccountContextMenu.js';
 
-  const handleCancel = () => {
-    history.goBack();
-  };
+import PlayerOver from './components/PlayerOver/PlayerOver';
+
+function App() {
+  const {appState, setAppState} = useContext(AppStateContext);
+  const [way, setWay] = useState([
+    {
+      "/": Hometab,
+      "/explore": Exploretab,
+      "/library": Librarytab,
+      "/search": Searchtab,
+      "/*": Hometab
+    }
+  ]);
+
+  const loct = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    switch (loct.pathname) {
+      case "/explore":
+      case "/library":
+      case "/search":
+      case "/w":
+        setAppState({...appState, appearance: {...appState.appearance, headerHighlighted: true}});
+        break;
+      default:
+        setAppState({...appState, appearance: {...appState.appearance, headerHighlighted: false}});
+        break;
+    }
+    if (loct.pathname !== '/w'){
+      if(way.some(obj => obj.hasOwnProperty(loct.pathname))){
+        setWay(prevWay => [
+            {
+              ...prevWay[0], // Keep other properties unchanged
+              "/*": way[0][loct.pathname]
+            },
+            ...prevWay.slice(1) // Keep other objects unchanged
+          ]);
+      }else{
+        navigate('/')
+      } 
+    }
+  }, [loct.pathname])
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
-        <h2>Pop-up Component</h2>
-        <button onClick={handleCancel}>Cancel</button>
-      </div>
+    <div className="App">
+      
+          <Header/>
+          <Routes>
+            <Route path={'/'} Component={way[0]['/']}/>
+            <Route path={'/explore'} Component={way[0]['/explore']}/>
+            <Route path={'/library'} Component={way[0]['/library']}/>
+            <Route path={'/search'} Component={way[0]['/search']}/>
+            <Route path={'/*'} Component={way[0]['/*']}/>
+          </Routes>
+          <AccountContextMenu/>
+          <PlayerOver/>
+          <PlayerNavigation/>
+      
     </div>
   );
-};
-
-const App = () => (
-  <Router>
-    <Routes>
-    <Route path="/" exact component={Home} />
-    <Route path="/popup" component={PopUpComponent} />
-    <Route path="/back1" render={() => <BackComponent name="Back 1" to="/popup" />} />
-    <Route path="/back2" render={() => <BackComponent name="Back 2" to="/popup" />} />
-    <Route path="/back3" render={() => <BackComponent name="Back 3" to="/popup" />} />
-    </Routes>
-  </Router>
-);
-
-const Home = () => (
-  <div>
-    <BackComponent name="Back 1" to="/back1" />
-    <BackComponent name="Back 2" to="/back2" />
-    <BackComponent name="Back 3" to="/back3" />
-  </div>
-);
+}
 
 export default App;
