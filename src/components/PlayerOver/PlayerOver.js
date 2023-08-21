@@ -7,7 +7,7 @@ import "./playerOver.css";
 import "./playerNavDesign.css";
 
 import posterSample from "./../../temp/p3.jpg";
-import mockData from "../../mock/mockData";
+// import mockData from "../../mock/mockData";
 
 
 function MusicPanel() {
@@ -75,10 +75,6 @@ function PlayerInterface() {
     )
 }
 function PlayerOver(props) {
-
-    useEffect(() => {
-        console.log(props.query)
-    }, [props]);
 
     const { appState, setAppState } = useContext(AppStateContext);
     

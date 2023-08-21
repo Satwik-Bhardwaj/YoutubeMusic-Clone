@@ -1,108 +1,84 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+
+import { AppStateContext } from "../../AppStateContext/AppStateContext";
+
 import "./lCard.css";
 import "./mCard.css";
 import "./optionList.css";
 import shelfItems from "../../selfItemfetcher";
+import TrackCategorySection from './../categories/TrackCategorySection';
 
-function YtPlayShelf({shelftype}){
+function YtPlayShelf({shelfdata}){
+    const { appState, setAppState } = useContext(AppStateContext);
+    const token = appState.token;
 
-    const shelfType = shelftype;
-
-    let shelfItem = shelfItems(shelfType.heading)
+    console.log(`https://api.spotify.com/v1/recommendations?${shelfdata.request}`);
 
     var shelfHead = (<></>);
-    if(shelfType.stype === "more-head"){
+    if(shelfdata.stype === "more-head"){
       shelfHead = (
         <>
-          <h1 className="sec-heading">{shelfType.heading}</h1>
-          <p className="sec-disp">{shelfType.description}</p> 
+          <h1 className="sec-heading">{shelfdata.mood}</h1>
+          <p className="sec-disp">{shelfdata.description}</p> 
         </>
       )
     }else{
       shelfHead = (
         <>
-          <h1 className="sec-heading">{shelfType.heading}</h1>
+          <h1 className="sec-heading">{shelfdata.mood}</h1>
         </>
       )
     }
 
     var putItems = (<></>);
-    if(shelfType.itemArr === "n-icons"){
-      putItems = (
-          
-        <div className="cards-list">
-          {
-            shelfItem.map((value)=>(
-              <div className="m-card" id="m-card">
-                <div className="m-card-insides">
-                  <div className="card-poster">
-                    <div className="play-pause-button">
-                      <span className="material-symbols-outlined">
-                        play_arrow
-                      </span>
-                    </div>
-                    <div className="poster-hover">
-                      <div className="more-option-button">
-                        <span className="material-symbols-outlined">
-                          more_vert
-                        </span>
-                      </div>
-                      
-                    </div>
-                    <img src={value.MusicPoster} alt="poster"/>
-                  </div>
-                  <div className="card-abouts">
-                    <a className="card-title">{value.MusicName}</a>
-                    <a className="card-album">{value.AlbumName} •</a>
-                  </div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      )
-    }else if(shelfType.itemArr === "tiles"){
+    if(shelfdata.itemArr === "tiles"){
       putItems = (
         <div className="longcards-list">
           {
-          shelfItem.map((value)=>(
-          <div className="l-card" id="l-card">
-            <div className="l-card-insides">
-              <div className="card-poster">
-                <div class="poster-hover">
-                  <div class="play-pause-button">
-                    <span class="material-symbols-outlined">
-                      play_arrow
-                    </span>
-                  </div>
-                </div>
-                <img src={value.MusicPoster} />
-              </div>
-              <div className="card-abouts">
-                <a className="card-title">{value.MusicName}</a>
-                <a className="card-album">{value.AlbumName}</a>
-              </div>
-              <div className="additional-btns">
-                <div className="functionality-btn">
-                  <div className="button-to-like">
-                    <span className="material-symbols-outlined">
-                      favorite
-                    </span>
-                  </div>
-                </div>
-                <div className="functionality-btn">
-                  <div className="more-option-button" id="more-option-oncard">
-                    <span className="material-symbols-outlined">
-                      more_vert
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          ))
+          // shelfItem.map((value)=>(
+          // <div className="l-card" id="l-card">
+          //   <div className="l-card-insides">
+          //     <div className="card-poster">
+          //       <div class="poster-hover">
+          //         <div class="play-pause-button">
+          //           <span class="material-symbols-outlined">
+          //             play_arrow
+          //           </span>
+          //         </div>
+          //       </div>
+          //       <img src={value.MusicPoster} />
+          //     </div>
+          //     <div className="card-abouts">
+          //       <a className="card-title">{value.MusicName}</a>
+          //       <a className="card-album">{value.AlbumName}</a>
+          //     </div>
+          //     <div className="additional-btns">
+          //       <div className="functionality-btn">
+          //         <div className="button-to-like">
+          //           <span className="material-symbols-outlined">
+          //             favorite
+          //           </span>
+          //         </div>
+          //       </div>
+          //       <div className="functionality-btn">
+          //         <div className="more-option-button" id="more-option-oncard">
+          //           <span className="material-symbols-outlined">
+          //             more_vert
+          //           </span>
+          //         </div>
+          //       </div>
+          //     </div>
+          //   </div>
+          // </div>
+          // ))
           }
         </div>
+      )
+      
+    }else{
+      putItems = (
+          <TrackCategorySection request={shelfdata.request}/>
       )
     }
 

@@ -1,0 +1,7 @@
+#library-main{
+    background-color: var(--theme-color-3);
+    margin: 60px 0px 0px 0px;
+    padding: 20px 5%;
+    width: 100%;
+    overflow: hidden;
+}

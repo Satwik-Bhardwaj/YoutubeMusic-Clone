@@ -89,6 +89,15 @@
     background-color: rgba(0, 0, 0, 0.588);
 }
 
+.m-card .poster-link{
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
 .m-card .material-symbols-outlined{
     color: var(--theme-color-5);
 }
