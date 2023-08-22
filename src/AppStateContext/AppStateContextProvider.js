@@ -28,7 +28,7 @@ const AppStateContextProvider = ({ children }) => {
           
           panelTab: "music",
       },
-      token: "BQBdCDox4ORz5oHPFhemaS3cP0L98qzJP7buofzh5RCJsLs-mpB57juju6BP8VIOODaV0yRNiBKHgGR1mj0AzAUOxMj5vFpiO3Z8m_dlrUEYn_wa6PLedmCLR2eiLvqemLjJ7PMnSyyG233oc0WV4_S9VD3vktsb7jyR4y0SE5Dz5JMn5bq_YFeHjVVHf1S6duzb3ssilB8qlGUyaatB2zNUDRer"
+      token: "BQB2AKX93VexSET6Ac0HZvgQKQrxDC7oVsMsyr8p1IJF21ZPgwdWPkKM7f58ECmEZ0kalWvdVKsQtSPo71T8e8uQJqaI21UvZZywNqGaXE0zNvIKr2jL89OWQOnMGA6VYhaq6fn1a5hPLMp0xOIYUc5BT7PkNZj4eZaW5HDO_LPIOkeYtP-x0mhPJpCE1JQXCED25p8bOud4O773fNLCooZKVeYY"
     });
 
   return (

@@ -18,7 +18,6 @@ function TrackCategorySection({request}){
             })
             .then(response => {
                 setTracks(response.data.tracks);
-                console.log(response.data.tracks);
             })
             .catch(error => {
                 console.error('Fetch error:', error);

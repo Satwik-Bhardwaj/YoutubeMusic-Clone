@@ -90,9 +90,9 @@ function YtPlayShelf({shelfdata}){
             </div>
             <div className="more-at-head">
               <div className="more-chips">
-                <div className="more-chip-btn more-finder" id="sec-more-music">
+                <a className="more-chip-btn more-finder" id="sec-more-music" href={`/category/tracks/${shelfdata.mood}`}>
                   <span>More</span>
-                </div>
+                </a>
                 <div className="more-chip-btn navigator-chips" id="sec-mov-lft">
                   <span className="material-symbols-outlined">
                     navigate_before

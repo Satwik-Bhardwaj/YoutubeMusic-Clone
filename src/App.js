@@ -11,7 +11,8 @@ import Exploretab from './components/explore-tab/Exploretab.js';
 import Librarytab from './components/library-tab/Librarytab.js';
 import Searchtab from './components/search-tab/Searchtab.js';
 import Playlist from './components/Playlists/Playlist';
-
+import PlaylistCategoryPage from './components/categories/PlaylistCategoryPage';
+import TrackCategoryPage from './components/categories/TrackCategoryPage';
 import PlayerNavigation from './components/PlayerOver/PlayerNavigation';
 import PlayerOver from './components/PlayerOver/PlayerOver';
 
@@ -39,6 +40,7 @@ function App() {
       case "/library":
       case "/search":
       case "/playlist":
+      case "/category/playlists":
       case "/w":
         setAppState({...appState, appearance: {...appState.appearance, headerHighlighted: true}});
         break;
@@ -80,6 +82,8 @@ function App() {
             <Route path={'/library'} Component={Librarytab}/>
             <Route path={'/search'} Component={Searchtab}/>
             <Route path={'/playlist/:id'} Component={Playlist}/>
+            <Route path={'/category/playlists/:id'} Component={PlaylistCategoryPage}/>
+            <Route path={'/category/tracks/:id'} Component={TrackCategoryPage}/>
             <Route path={'/*'} Component={Hometab}/>
           </Routes>
           <AccountContextMenu/>

@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import {useState, useContext, useEffect} from 'react';
 import axios from "axios";
 
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
-import PlaylistCard from "../PlaylistCard/PlaylistCard";
+import PlaylistCard from '../PlaylistCard/PlaylistCard';
 
-function PlaylistCategorySection({category_id}){
+
+function PlaylistsList({category_id}){
     const { appState, setAppState } = useContext(AppStateContext);
     const token = appState.token;
-    
-    const [playlists, setPlayLists] = useState(null);
 
+    const [ playlists, setPlayLists ] = useState(null)
     useEffect(()=>{
         if (token) {
             axios.get(`https://api.spotify.com/v1/browse/categories/${category_id}/playlists`, {
@@ -27,24 +27,18 @@ function PlaylistCategorySection({category_id}){
         }
     }, [token]);
 
-    if(playlists === null) return null;
+    if (playlists == null) return null;
 
-    const limitedMappedData = playlists.slice(0, Math.min(10, playlists.length)).map(playlist => (
-        <PlaylistCard 
+    return (
+        playlists.map(playlist => (
+            <PlaylistCard 
             linkTo={`/playlist/${playlist?.id}`}
             playlistName={`${playlist?.name}`}
             playlistDesp={`${playlist?.type}`}
             posterImg={`${playlist?.images[0]?.url}`}
         />
-
-        
-    ));
-    return (
-        <div className="cards-list">
-            {limitedMappedData}
-        </div>
+            
+        ))
     )
-
 }
-
-export default PlaylistCategorySection;
+export default PlaylistsList;

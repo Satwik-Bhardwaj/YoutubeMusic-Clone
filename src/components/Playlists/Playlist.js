@@ -38,6 +38,23 @@ function Playlist() {
 
     if(playlist === null) return null;
 
+    function formatNumber(number) {
+      const abbreviations = {
+        T: 1000000000000,
+        B: 1000000000,
+        M: 1000000,
+        K: 1000,
+      };
+    
+      for (const symbol in abbreviations) {
+        if (number >= abbreviations[symbol]) {
+          return (number / abbreviations[symbol]).toFixed(1) + symbol;
+        }
+      }
+    
+      return number.toString();
+    }
+
     return (
       <div id="main">
         <div className="sec" id="sec-id">
@@ -45,7 +62,7 @@ function Playlist() {
             <div className="head-written">
               <h1 className="sec-heading">{playlist.name}</h1>
               <p className="sec-disp">{playlist.description}</p>
-              <p className="sec-more">Followers: {playlist.followers.total} • Owner: {playlist.owner.display_name}</p>
+              <p className="sec-more">Followers: {formatNumber(playlist.followers.total)} • Owner: {playlist.owner.display_name}</p>
             </div>
             <div className="more-at-head">
               <div className="more-chips">

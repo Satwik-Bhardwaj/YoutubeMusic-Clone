@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import axios from 'axios';
 
 import MoodChips from "./MoodChips/moodchips";
@@ -6,15 +6,16 @@ import YtPlayShelf from "../YtPlayShelf/ytplayshelf";
 
 import "./hometab.css";
 
+export const MajorCategories = {
+  categories: [
+    {mood: "Indian", request: "seed_genres=indian", type: "block"},
+    {mood: "Classical", request:"seed_genres=classical", type: "tiles"}
+  ]
+}
 
 function Hometab() {
 
-  const MajorCategories = {
-    categories: [
-      {mood: "Indian", request: "seed_genres=indian", type: "block"},
-      {mood: "Classical", request:"seed_genres=classical", type: "tiles"}
-    ]
-  }
+  
 
   if(MajorCategories === null) return MajorCategories;
     

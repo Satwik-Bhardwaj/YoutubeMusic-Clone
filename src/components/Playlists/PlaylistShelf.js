@@ -2,7 +2,7 @@ import React from "react";
 import PlaylistCategorySection from './../categories/PlaylistCategorySection';
 
 function PlaylistShelf({shelfdata}){
-
+    console.log(shelfdata)
     return (
         <div className="sec">
           <div className="head-o-sec">
@@ -11,9 +11,9 @@ function PlaylistShelf({shelfdata}){
             </div>
             <div className="more-at-head">
               <div className="more-chips">
-                <div className="more-chip-btn more-finder" id="sec-more-music">
+                <a className="more-chip-btn more-finder" id="sec-more-music" href={`/category/playlists/${shelfdata.id}`}>
                   <span>More</span>
-                </div>
+                </a>
                 <div className="more-chip-btn navigator-chips" id="sec-mov-lft">
                   <span className="material-symbols-outlined">
                     navigate_before
