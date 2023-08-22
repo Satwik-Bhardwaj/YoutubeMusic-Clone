@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import MoodChips from "./MoodChips/moodchips";
 import YtPlayShelf from "../YtPlayShelf/ytplayshelf";
+import PlayerKit from "../../PlayerKit/playerkit";
 
 import "./hometab.css";
 
@@ -24,7 +25,7 @@ function Hometab() {
     <div id="main">
       {/* mood chips */}
       <MoodChips/>
-
+      {/* <PlayerKit/> */}
       {/* shelf section */}
       {MajorCategories.categories.map((type)=>(
         <YtPlayShelf shelfdata={type}/>
