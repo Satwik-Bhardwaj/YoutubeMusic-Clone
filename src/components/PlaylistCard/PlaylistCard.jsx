@@ -1,5 +1,8 @@
+import { NavLink } from "react-router-dom";
+
 function PlaylistCard({linkTo, playlistName, playlistDesp , posterImg}) {
     return (
+        <NavLink to={linkTo}>
         <div className="m-card" id="m-card">
             <div className="m-card-insides">
                 <div className="card-poster">
@@ -24,6 +27,7 @@ function PlaylistCard({linkTo, playlistName, playlistDesp , posterImg}) {
                 </div>
             </div>
         </div>
+        </NavLink>
     )
 }
 export default PlaylistCard;

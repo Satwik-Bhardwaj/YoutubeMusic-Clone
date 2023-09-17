@@ -8,6 +8,7 @@ import { MajorCategories } from '../main-tab/Hometab';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 
 import TrackCategoryList from './TrackCategoryList';
+import AppLayout from '../AppLayout/AppLayout';
 
 // this function is also for mock
 function getRequestByMood(mood) {
@@ -54,6 +55,7 @@ function TrackCategoryPage() {
     if(category === null) return null;
 
     return (
+      <AppLayout>
       <div id="main">
         <div className="sec" id="sec-id">
           <div className="head-o-sec">
@@ -69,6 +71,7 @@ function TrackCategoryPage() {
           </div>
         </div>
       </div>
+      </AppLayout>
     )
 }
 export default TrackCategoryPage;

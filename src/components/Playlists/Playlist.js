@@ -2,14 +2,15 @@ import {useState, useContext, useEffect} from 'react';
 import { Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 
+import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
-
 import './playlist.css'
 import PlaylistsList from './PlaylistsList';
+import AppLayout from '../AppLayout/AppLayout';
 
 function Playlist() {
     const { appState, setAppState } = useContext(AppStateContext);
-    const token = appState.token;
+    const token = getCookie('youtube-music-clone').token;
 
     const { id: playlist_id } = useParams();
 
@@ -26,7 +27,6 @@ function Playlist() {
             }
           })
           .then(response => {
-              console.log(response)
               setPlayLists(response.data)
           })
           .catch(error => {
@@ -56,6 +56,7 @@ function Playlist() {
     }
 
     return (
+      <AppLayout>
       <div id="main">
         <div className="sec" id="sec-id">
           <div className="head-o-sec">
@@ -80,6 +81,7 @@ function Playlist() {
           </div>
         </div>
       </div>
+      </AppLayout>
     )
 }
 export default Playlist;

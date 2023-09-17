@@ -7,7 +7,7 @@ import "./playerOver.css";
 import "./playerNavDesign.css";
 
 import posterSample from "./../../temp/p3.jpg";
-// import mockData from "../../mock/mockData";
+import AppLayout from "../AppLayout/AppLayout";
 
 
 function MusicPanel() {
@@ -19,7 +19,7 @@ function MusicPanel() {
         <>
         <div className="playerPanel">
             <div className="music-poster">
-                <img src={posterSample} alt="Music Poster" />
+                <img src={musicDetails.musicPoster} alt="Music Poster" />
                 <div className="music-details">
                     <div className="music-name"><span>{musicDetails.musicName}</span></div>
                     <div className="artist-name"><span>{musicDetails.artistName}</span></div>
@@ -77,10 +77,11 @@ function PlayerInterface() {
 function PlayerOver(props) {
 
     const { appState, setAppState } = useContext(AppStateContext);
-    
     if(appState.player.playNStop){    
         return(
+            <AppLayout>
             <PlayerInterface/>
+            </AppLayout>
         )
     }
     
@@ -100,7 +101,7 @@ function QueueC(){
                 <img src="https://example.com/posters/current-song.jpg" alt="Poster" />
                 <div class="details">
                     <div class="useful-details">
-                    <p class="music-name">Song 1</p>
+                    <p class="music-name">Song 1    </p>
                     <p class="artist-name">Artist 1</p>
                     <p class="album-name">Album 1</p>
                     <p class="duration">3:45</p>

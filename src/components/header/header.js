@@ -45,7 +45,7 @@ function Header() {
           </div>
           <ul className="nav-items">
             <li className="item">
-              <NavLink to="/" style={({isActive})=>{return{color: isActive ? 'white': ''}}}>
+              <NavLink to="/Home" style={({isActive})=>{return{color: isActive ? 'white': ''}}}>
                 <div>
                   <span className="material-symbols-outlined">home</span>
                   <label>Home</label>
@@ -61,7 +61,7 @@ function Header() {
               </NavLink>
             </li>
             <li className="item">
-              <NavLink to="library" style={({isActive})=>{return{color: isActive ? 'white': ''}}}>
+              <NavLink to="/library" style={({isActive})=>{return{color: isActive ? 'white': ''}}}>
                 <div>
                   <span className="material-symbols-outlined">library_music</span>
                   <label>Library</label>

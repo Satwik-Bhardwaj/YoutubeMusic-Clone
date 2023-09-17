@@ -1,6 +1,7 @@
 import {useState, useContext, useEffect} from 'react';
 import axios from "axios";
 
+import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 import TrackCard from '../Trackcard/TrackCard';
 
@@ -8,7 +9,7 @@ import './playlist.css'
 
 function PlaylistsList({playlist_id}){
     const { appState, setAppState } = useContext(AppStateContext);
-    const token = appState.token;
+    const token = getCookie('youtube-music-clone').token;
 
     const [ items, setItems ] = useState(null)
     useEffect(()=>{
@@ -21,7 +22,6 @@ function PlaylistsList({playlist_id}){
             }
           })
           .then(response => {
-              console.log(response)
               setItems(response.data.items)
           })
           .catch(error => {
@@ -39,6 +39,7 @@ function PlaylistsList({playlist_id}){
                 trackName={item?.track?.name}
                 tracktArtists={item?.track?.artists}
                 posterImg={`${item?.track?.album?.images[0]?.url}`}
+                track_id={`${item?.track?.id}`}
             />
             
         ))

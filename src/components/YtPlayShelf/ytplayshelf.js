@@ -8,12 +8,12 @@ import "./mCard.css";
 import "./optionList.css";
 import shelfItems from "../../selfItemfetcher";
 import TrackCategorySection from './../categories/TrackCategorySection';
+import { NavLink } from "react-router-dom";
 
 function YtPlayShelf({shelfdata}){
     const { appState, setAppState } = useContext(AppStateContext);
     const token = appState.token;
 
-    console.log(`https://api.spotify.com/v1/recommendations?${shelfdata.request}`);
 
     var shelfHead = (<></>);
     if(shelfdata.stype === "more-head"){
@@ -90,9 +90,12 @@ function YtPlayShelf({shelfdata}){
             </div>
             <div className="more-at-head">
               <div className="more-chips">
-                <a className="more-chip-btn more-finder" id="sec-more-music" href={`/category/tracks/${shelfdata.mood}`}>
+                <NavLink to={`/category/tracks/${shelfdata.mood}`}>
+                <div className="more-chip-btn more-finder" id="sec-more-music">
                   <span>More</span>
-                </a>
+                </div>
+                </NavLink>
+                
                 <div className="more-chip-btn navigator-chips" id="sec-mov-lft">
                   <span className="material-symbols-outlined">
                     navigate_before

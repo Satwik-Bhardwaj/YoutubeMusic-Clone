@@ -7,10 +7,62 @@ import "./playerOver.css";
 import "./playerNavDesign.css";
 
 import posterSample from "./../../temp/p3.jpg";
-// import mockData from "../../mock/mockData";
+
 
 function PlayerNavigation(){
     const {appState, setAppState} = useContext(AppStateContext);
+
+    const [audioPlayer, setAudioPlayer] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
+    
+
+    useEffect(()=>{
+        const player = new Audio("https://learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3");
+
+
+        player.addEventListener("timeupdate", () => {
+        setCurrentTime(player.currentTime);
+        });
+
+        player.addEventListener("ended", () => {
+            setIsPlaying(false);
+          });
+      
+        setAudioPlayer(player);
+        
+    }, [])
+
+    // to initialize the playing
+    useEffect(()=>{
+        if(appState.player.onPlay && audioPlayer){
+            audioPlayer.play();
+            setAppState({...appState, player: {...appState.player, onPlay: false}});
+        }
+    },[audioPlayer])
+
+    const formatTime=(milliseconds)=>{
+        if (milliseconds <= 0) {
+            return "0:00";
+          }
+        
+          // Calculate hours, minutes, and seconds
+          const hours = Math.floor(milliseconds / 3600000);
+          const minutes = Math.floor((milliseconds % 3600000) / 60000);
+          const seconds = Math.floor((milliseconds % 60000) / 1000);
+        
+          // Format the time
+          let formattedTime = "";
+        
+          if (hours > 0) {
+            formattedTime += `${hours}:`;
+          }
+        
+          formattedTime += `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+          
+          return formattedTime;
+    }
+
 
     const [isMusicTextOverflowing, setIsMusicTextOverflowing] = useState(false);
     const [isArtistTextOverflowing, setIsArtistTextOverflowing] = useState(false);
@@ -33,9 +85,17 @@ function PlayerNavigation(){
         }
     }
 
-    const playPauseHandle = () => {
-        setAppState({...appState, player: {...appState.player, onPlay: !appState.player.onPlay}});
-    }
+    const togglePlay = () => {
+        if (audioPlayer) {
+          if (audioPlayer.paused) {
+            audioPlayer.play();
+            setIsPlaying(true);
+          } else {
+            audioPlayer.pause();
+            setIsPlaying(false);
+          }
+        }
+      };
 
     const skipPrevHandle = () => {}
     const skipNextHandle = () => {}
@@ -52,15 +112,21 @@ function PlayerNavigation(){
          
     }
     useEffect(() => {
+        if(appState.player.playNStop === false) return;
+
         setIsMusicTextOverflowing(musicNameRef.current.firstChild.scrollWidth > musicNameRef.current.offsetWidth);
         setIsArtistTextOverflowing(artistNameRef.current.firstChild.scrollWidth > artistNameRef.current.offsetWidth);
     }, []);
-    
+
+    const currentTimeOutput = formatTime(currentTime*1000);
+
+    if(appState.player.playNStop === false){ return (<></>)}
+
     return (
         <div className="playerNavBar">
             <div className="navbar-internal" onClick={handlePlayerSlide}>
                 <div className="music-poster">
-                    <img src={posterSample} alt="Music Poster" />
+                    <img src={musicDetails.musicPoster} alt="Music Poster" />
                     <div className="music-details">
                     <div className={isMusicTextOverflowing ? "music-name make-text-dynamic" : "music-name"} ref={musicNameRef}><span className={isMusicTextOverflowing ? "slide-text" : ""}>{musicDetails.musicName}</span></div>
                     <div className={isArtistTextOverflowing ? "artist-name make-text-dynamic" : "artist-name"} ref={artistNameRef}><span className={isArtistTextOverflowing ? "slide-text" : ""}>{musicDetails.artistName}</span></div>
@@ -76,8 +142,8 @@ function PlayerNavigation(){
                     <span className="material-symbols-outlined">skip_previous</span>
                     </button>
 
-                    <button className="play-pause-button" aria-label="Play/Pause" onClick={playPauseHandle}>
-                    <span className="material-symbols-outlined">{appState.player.onPlay? "play_arrow" : "pause"}</span>
+                    <button className="play-pause-button" aria-label="Play/Pause" onClick={togglePlay}>
+                    <span className="material-symbols-outlined">{appState.player.onPlay? "pause" : "play_arrow"}</span>
                     </button>
 
                     <button className="next-button" aria-label="Next" onClick={skipNextHandle}>
@@ -86,13 +152,13 @@ function PlayerNavigation(){
                 </div>
 
                 <div className="music-progress">
-                    <div className="current-time">0:00</div>
-                    <div class="progress-bar-container">
-                        <div className="progress-bar">
+                    <div className="current-time">{currentTimeOutput}</div>
+                    <div className="progress-bar-container">
+                        <div className="progress-bar" style={{width: `${(currentTime*1000/musicDetails.musicDuration)*100}%`}}>
                             <div className="dot" id="dot"></div>
                         </div>
                     </div>
-                    <div className="duration">{musicDetails.musicDuration}</div>
+                    <div className="duration">{formatTime(musicDetails.musicDuration)}</div>
                 </div>
 
                 <button className="shuffle-button" aria-label="Shuffle" onClick={shuffleModeHandle}>

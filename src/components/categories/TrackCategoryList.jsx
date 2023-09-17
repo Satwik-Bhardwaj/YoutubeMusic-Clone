@@ -1,13 +1,14 @@
 import {useState, useContext, useEffect} from 'react';
 import axios from "axios";
 
+import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 import TrackCard from '../Trackcard/TrackCard';
 
 
 function TrackCategoryList({category_id}){
     const { appState, setAppState } = useContext(AppStateContext);
-    const token = appState.token;
+    const token = getCookie('youtube-music-clone').token;
 
     const [ tracks, setTracks ] = useState(null)
     useEffect(()=>{
@@ -18,6 +19,7 @@ function TrackCategoryList({category_id}){
                 }
             })
             .then(response => {
+                
                 setTracks(response.data.tracks);
             })
             .catch(error => {
@@ -25,7 +27,7 @@ function TrackCategoryList({category_id}){
             });
         }
     },[token])
-
+    console.log(token);
     if (tracks == null) return null;
 
     return (
@@ -35,6 +37,7 @@ function TrackCategoryList({category_id}){
                 trackName={item?.name}
                 tracktArtists={item?.artists}
                 posterImg={`${item?.album?.images[0]?.url}`}
+                track_id={`${item?.id}`}
             />
             
         ))

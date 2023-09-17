@@ -1,13 +1,14 @@
 import {useState, useContext, useEffect} from 'react';
 import axios from "axios";
 
+import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 import PlaylistCard from '../PlaylistCard/PlaylistCard';
 
 
 function PlaylistsList({category_id}){
     const { appState, setAppState } = useContext(AppStateContext);
-    const token = appState.token;
+    const token = getCookie('youtube-music-clone').token;
 
     const [ playlists, setPlayLists ] = useState(null)
     useEffect(()=>{

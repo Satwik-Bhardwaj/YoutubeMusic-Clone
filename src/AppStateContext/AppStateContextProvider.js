@@ -13,8 +13,8 @@ const AppStateContextProvider = ({ children }) => {
       searchBoxOpened: false,
       contextMenuOpened: false,
       player: {
-          onPlay: true,
-          playNStop: true,
+          onPlay: false,
+          playNStop: false,
           playerSlideOpen: false,
           musicLink: "NA",
           musicPoster: "NA",
@@ -28,7 +28,7 @@ const AppStateContextProvider = ({ children }) => {
           
           panelTab: "music",
       },
-      token: "BQCtZfgQAdw43uHtKFVHEl1yIeB9owMUqLKs-I895V1svU7jKUOMs3rEDukWd87b830-GZeofoAb_7I21786hszoe6H9myJt_0VhW2mwfTFmlWFrEq7T8w9eHHzwvFH3UqjjKnkHN0NKi0llrmIYJsS2go04IDEv9CzCSivMrMm2G9l26hwQk3U5qf3YSXZu9qPYmz_Z-xlwjOYBdr2b7CfluYTy"
+      token: null
     });
 
   return (

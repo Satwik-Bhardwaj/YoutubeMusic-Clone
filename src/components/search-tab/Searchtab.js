@@ -1,7 +1,8 @@
 import React from "react";
+import AppLayout from "../AppLayout/AppLayout";
 
 function Searchtab(){
-    return(<></>)
+    return(<AppLayout></AppLayout>)
 }
 
 export default Searchtab;

@@ -3,10 +3,12 @@ a, li, p, h1, h2, h3, h4, h5{
 }
 
 #main{
-    margin: 60px 0px 0px 0px;
-    padding: 20px 0px;
-    width: 90%;
+    margin: 0px 0px 0px 0px;
+    padding: 80px 5%;
+    width: 100%;
     overflow: hidden;
+    background: -webkit-radial-gradient(30vw -20vh, circle closest-corner, #3f21ff 0%, #23007c 20vw, rgb(0, 0, 0) 50vw);
+
 }
 
 .sec{

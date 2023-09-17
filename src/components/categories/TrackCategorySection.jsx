@@ -3,10 +3,11 @@ import axios from "axios";
 
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 import TrackCard from "../Trackcard/TrackCard";
+import { getCookie } from "../../cookieAndSession/cookiesOperator";
 
 function TrackCategorySection({request}){
     const { appState, setAppState } = useContext(AppStateContext);
-    const token = appState.token;
+    const token = getCookie('youtube-music-clone').token;
     
     const [tracks, setTracks] = useState(null);
     useEffect(()=>{
@@ -34,6 +35,7 @@ function TrackCategorySection({request}){
             trackName={item?.name}
             tracktArtists={item?.artists}
             posterImg={`${item?.album?.images[0]?.url}`}
+            track_id={`${item?.id}`}
         />
 
     ));

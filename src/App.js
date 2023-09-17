@@ -6,6 +6,7 @@ import './App.css';
 import { AppStateContext } from './AppStateContext/AppStateContext';
 
 import Header from './components/header/header.js'
+import Welcome, { Verify } from './components/Welcome/welcome';
 import Hometab from './components/main-tab/Hometab.js';
 import Exploretab from './components/explore-tab/Exploretab.js';
 import Librarytab from './components/library-tab/Librarytab.js';
@@ -68,7 +69,6 @@ function App() {
 
   return (
     <div className="App">
-          <Header/>
           <Routes>
             {/* <Route path={'/'} Component={way[0]['/']}/>
             <Route path={'/explore'} Component={way[0]['/explore']}/>
@@ -77,18 +77,20 @@ function App() {
             <Route path={'/welcome'} Component={way[0]['/welcome']}/>
             <Route path='/playlist/:id' Component={way[0]['/playlist']}/>
             <Route path={'/*'} Component={way[0]['/*']}/> */}
-            <Route path={'/'} Component={Hometab}/>
-            <Route path={'/explore'} Component={Exploretab}/>
+            <Route path={'/'} Component={Welcome}/>
+            <Route path={'/verify'} Component={Verify}/>
+            <Route path={'/Home'} Component={Hometab}/>
             <Route path={'/library'} Component={Librarytab}/>
+            <Route path={'/explore'} Component={Exploretab}/>
             <Route path={'/search'} Component={Searchtab}/>
             <Route path={'/playlist/:id'} Component={Playlist}/>
             <Route path={'/category/playlists/:id'} Component={PlaylistCategoryPage}/>
             <Route path={'/category/tracks/:id'} Component={TrackCategoryPage}/>
+            <Route path={'/w'} Component={PlayerOver}/>
             <Route path={'/*'} Component={Hometab}/>
           </Routes>
           <AccountContextMenu/>
-          <PlayerOver/>
-          <PlayerNavigation/>
+          
       
     </div>
   );

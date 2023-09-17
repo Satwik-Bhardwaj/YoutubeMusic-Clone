@@ -6,6 +6,7 @@ import YtPlayShelf from "../YtPlayShelf/ytplayshelf";
 import PlayerKit from "../../PlayerKit/playerkit";
 
 import "./hometab.css";
+import AppLayout from "../AppLayout/AppLayout";
 
 export const MajorCategories = {
   categories: [
@@ -21,20 +22,20 @@ function Hometab() {
   if(MajorCategories === null) return MajorCategories;
     
   return (
-    <>
-    <div id="main">
-      {/* mood chips */}
-      <MoodChips/>
-      {/* <PlayerKit/> */}
-      {/* shelf section */}
-      {MajorCategories.categories.map((type)=>(
-        <YtPlayShelf shelfdata={type}/>
-      ))}
+    <AppLayout>
+      <div id="main">
+        {/* mood chips */}
+        <MoodChips/>
+        {/* <PlayerKit/> */}
+        {/* shelf section */}
+        {MajorCategories.categories.map((type)=>(
+          <YtPlayShelf shelfdata={type}/>
+        ))}
 
-      
-      
-    </div>
-    </>
+        
+        
+      </div>
+    </AppLayout>
   );
 }
 

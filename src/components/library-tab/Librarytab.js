@@ -3,12 +3,14 @@ import axios from 'axios';
 
 import PlaylistShelf from "../Playlists/PlaylistShelf";
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
+import { getCookie } from "../../cookieAndSession/cookiesOperator";
 
 import './library.css'
+import AppLayout from "../AppLayout/AppLayout";
 
 function Librarytab() {
   const { appState, setAppState } = useContext(AppStateContext);
-  const token = appState.token;
+  const token = getCookie('youtube-music-clone').token;
 
   const [data, setData] = useState(null);
   useEffect(()=>{
@@ -19,22 +21,28 @@ function Librarytab() {
           Authorization: `Bearer ${token}`
         }
       })
+      // axios.get('http://localhost:9090/v1/browse/categories', {
+      //   headers: {
+          
+      //   }
+      // })
       .then(response => {
+        console.log('Fetched data:', response);
         setData(response);
-        
       })
       .catch(error => {
         console.error('Fetch error:', error);
       });
     }
   },[token])
-  console.log('Fetched data:', data);
+  
+  console.log(token);
 
-  if(data === null) return data;
+  if(data === null) return(<AppLayout/>);
   
   
   return (
-    <>
+    <AppLayout>
     <div id="library-main">
         
         {data.data.categories.items.map((data)=>(
@@ -42,7 +50,7 @@ function Librarytab() {
       ))}
 
     </div>
-    </>
+    </AppLayout>
   );
 }
 

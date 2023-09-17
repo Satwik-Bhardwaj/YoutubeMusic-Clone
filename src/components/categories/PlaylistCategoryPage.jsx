@@ -2,18 +2,21 @@ import {useState, useContext, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 
+import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 
-import CategoryList from './CategoryList';
+import PlaylistsList from './CategoryList';
+import AppLayout from '../AppLayout/AppLayout';
 
 function PlaylistCategoryPage() {
     const { appState, setAppState } = useContext(AppStateContext);
-    const token = appState.token;
+    const token = getCookie('youtube-music-clone').token;
 
     const { id: category_id } = useParams();
     
     const [ category, setCategory] = useState(null)
     
+    console.log(token);
     useEffect(()=>{
         if (token) {
             axios.get(`https://api.spotify.com/v1/browse/categories/${category_id}`, {
@@ -29,10 +32,12 @@ function PlaylistCategoryPage() {
             });
         }
     }, [token]);
+    
 
     if(category === null) return null;
 
     return (
+      <AppLayout>
       <div id="main">
         <div className="sec" id="sec-id">
           <div className="head-o-sec">
@@ -49,11 +54,12 @@ function PlaylistCategoryPage() {
             
           <div className="playlist-internal-sec">
             <div className="playlist-items-list"> 
-              <CategoryList category_id={category_id}/>
+              <PlaylistsList category_id={category_id}/>
             </div>
           </div>
         </div>
       </div>
+      </AppLayout>
     )
 }
 export default PlaylistCategoryPage;

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import PlaylistCategorySection from './../categories/PlaylistCategorySection';
 
 function PlaylistShelf({shelfdata}){
@@ -11,9 +12,11 @@ function PlaylistShelf({shelfdata}){
             </div>
             <div className="more-at-head">
               <div className="more-chips">
-                <a className="more-chip-btn more-finder" id="sec-more-music" href={`/category/playlists/${shelfdata.id}`}>
-                  <span>More</span>
-                </a>
+                <NavLink to={`/category/playlists/${shelfdata.id}`}>
+                  <div className="more-chip-btn more-finder" id="sec-more-music">
+                    <span>More</span>
+                  </div>
+                </NavLink>
                 <div className="more-chip-btn navigator-chips" id="sec-mov-lft">
                   <span className="material-symbols-outlined">
                     navigate_before

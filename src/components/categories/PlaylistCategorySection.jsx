@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
+import { getCookie } from "../../cookieAndSession/cookiesOperator";
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 import PlaylistCard from "../PlaylistCard/PlaylistCard";
 
 function PlaylistCategorySection({category_id}){
     const { appState, setAppState } = useContext(AppStateContext);
-    const token = appState.token;
+    const token = getCookie('youtube-music-clone').token;
     
     const [playlists, setPlayLists] = useState(null);
 
@@ -17,6 +18,11 @@ function PlaylistCategorySection({category_id}){
                 Authorization: `Bearer ${token}`
               }
             })
+            // axios.get(`http://localhost:9090/v1/browse/categories/${category_id}/playlists`, {
+            //     headers: {
+                
+            //     }
+            // })
             .then(response => {
                 const playlists = response.data.playlists.items;
                 setPlayLists(response.data.playlists.items);
