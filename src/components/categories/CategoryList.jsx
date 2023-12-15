@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
+import config from '../../AppStateContext/config';
 import PlaylistCard from '../PlaylistCard/PlaylistCard';
 
 
@@ -13,7 +14,7 @@ function PlaylistsList({category_id}){
     const [ playlists, setPlayLists ] = useState(null)
     useEffect(()=>{
         if (token) {
-            axios.get(`https://api.spotify.com/v1/browse/categories/${category_id}/playlists`, {
+            axios.get(`${config.apiDomain}v1/browse/categories/${category_id}/playlists`, {
               headers: {
                 Authorization: `Bearer ${token}`
               }

@@ -41,7 +41,7 @@ function Header() {
       <header id="header-prime" style={isScrolled || appState.appearance.headerHighlighted ?{backgroundColor:'black', borderBottom:'1px solid var(--theme-color-4)'}:{}}>
         <nav>
           <div className="site-logo">
-            <p>Satwik</p>
+            <p>Cassette</p>
           </div>
           <ul className="nav-items">
             <li className="item">

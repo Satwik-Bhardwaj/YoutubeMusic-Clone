@@ -16,6 +16,7 @@ import PlaylistCategoryPage from './components/categories/PlaylistCategoryPage';
 import TrackCategoryPage from './components/categories/TrackCategoryPage';
 import PlayerNavigation from './components/PlayerOver/PlayerNavigation';
 import PlayerOver from './components/PlayerOver/PlayerOver';
+import MusicUploader from './components/MusicUploader/MusicUploader';
 
 import AccountContextMenu from './supercomponents/AccountContextMenu/AccountContextMenu.js';
 
@@ -49,34 +50,11 @@ function App() {
         setAppState({...appState, appearance: {...appState.appearance, headerHighlighted: false}});
         break;
     }
-    // if (loct.pathname !== '/w'){
-    //   if(way.some(obj => obj.hasOwnProperty(loct.pathname))){
-    //     setWay(prevWay => [
-    //         {
-    //           ...prevWay[0], // Keep other properties unchanged
-    //           "/*": way[0][loct.pathname]
-    //         },
-    //         ...prevWay.slice(1) // Keep other objects unchanged
-    //       ]);
-    //   }else if(loct.pathname === '/playlist'){
-    //     console.log('called')
-    //   }else{
-    //     console.log('redirecting')
-    //     navigate('/')
-    //   } 
-    // }
   }, [loct.pathname])
 
   return (
     <div className="App">
           <Routes>
-            {/* <Route path={'/'} Component={way[0]['/']}/>
-            <Route path={'/explore'} Component={way[0]['/explore']}/>
-            <Route path={'/library'} Component={way[0]['/library']}/>
-            <Route path={'/search'} Component={way[0]['/search']}/>
-            <Route path={'/welcome'} Component={way[0]['/welcome']}/>
-            <Route path='/playlist/:id' Component={way[0]['/playlist']}/>
-            <Route path={'/*'} Component={way[0]['/*']}/> */}
             <Route path={'/'} Component={Welcome}/>
             <Route path={'/verify'} Component={Verify}/>
             <Route path={'/Home'} Component={Hometab}/>
@@ -89,7 +67,9 @@ function App() {
             <Route path={'/w'} Component={PlayerOver}/>
             <Route path={'/*'} Component={Hometab}/>
           </Routes>
+          <PlayerNavigation/>
           <AccountContextMenu/>
+          <MusicUploader/>
           
       
     </div>

@@ -6,7 +6,7 @@ import { AppStateContext } from "../../AppStateContext/AppStateContext.js";
 
 function AccountContextMenu({account_details}){
 
-    const { appState } = useContext(AppStateContext);
+    const { appState, setAppState } = useContext(AppStateContext);
     const contextMenuState = appState.contextMenuOpened;
     if(contextMenuState){
         return(
@@ -40,7 +40,7 @@ function AccountContextMenu({account_details}){
                     </div>
                     <hr className="menu-partition"/>
                     <div className="submenu">
-                    <div className="menubtn">
+                        <div className="menubtn" onClick={()=>{setAppState({...appState, musicUploader: !appState.musicUploader})}}>
                             <span>Upload Music</span>
                         </div>
                         <div className="menubtn">

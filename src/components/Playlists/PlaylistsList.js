@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
+import config from '../../AppStateContext/config';
 import TrackCard from '../Trackcard/TrackCard';
 
 import './playlist.css'
@@ -16,12 +17,19 @@ function PlaylistsList({playlist_id}){
         if (token) {
 
           // fetching the tracks in playlist
-          axios.get(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
+          // axios.get(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`
+          //   }
+          // })
+
+          axios.get(`${config.apiDomain}v1/playlists/${playlist_id}/tracks`, {
             headers: {
-              Authorization: `Bearer ${token}`
+              
             }
           })
           .then(response => {
+              console.log(response)
               setItems(response.data.items)
           })
           .catch(error => {
@@ -34,13 +42,13 @@ function PlaylistsList({playlist_id}){
 
     return (
         items.map(item => (
-            <TrackCard 
-                linkTo={`/w?=${item?.track?.id}`} 
-                trackName={item?.track?.name}
-                tracktArtists={item?.track?.artists}
-                posterImg={`${item?.track?.album?.images[0]?.url}`}
-                track_id={`${item?.track?.id}`}
-            />
+          <TrackCard 
+            linkTo={`/w?=${item?.id}`}
+            trackName={item?.name}
+            tracktArtists={item?.artists}
+            posterImg={`${item?.album?.images[0]?.url}`}
+            track_id={`${item?.id}`}
+          />
             
         ))
     )

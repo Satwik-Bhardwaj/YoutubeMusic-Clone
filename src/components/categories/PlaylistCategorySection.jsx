@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { getCookie } from "../../cookieAndSession/cookiesOperator";
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
+import config from "../../AppStateContext/config";
 import PlaylistCard from "../PlaylistCard/PlaylistCard";
 
 function PlaylistCategorySection({category_id}){
@@ -13,18 +14,18 @@ function PlaylistCategorySection({category_id}){
 
     useEffect(()=>{
         if (token) {
-            axios.get(`https://api.spotify.com/v1/browse/categories/${category_id}/playlists`, {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
-            })
-            // axios.get(`http://localhost:9090/v1/browse/categories/${category_id}/playlists`, {
-            //     headers: {
-                
-            //     }
+            // axios.get(`https://api.spotify.com/v1/browse/categories/${category_id}/playlists`, {
+            //   headers: {
+            //     Authorization: `Bearer ${token}`
+            //   }
             // })
+            axios.get(`${config.apiDomain}v1/browse/categories/${category_id}/playlists`, {
+                headers: {
+                
+                }
+            })
             .then(response => {
-                const playlists = response.data.playlists.items;
+                console.log(response.data.playlists.items)
                 setPlayLists(response.data.playlists.items);
             })
             .catch(error => {

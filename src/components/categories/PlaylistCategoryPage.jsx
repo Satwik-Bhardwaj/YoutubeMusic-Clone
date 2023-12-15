@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
+import config from '../../AppStateContext/config';
 
 import PlaylistsList from './CategoryList';
 import AppLayout from '../AppLayout/AppLayout';
@@ -19,9 +20,14 @@ function PlaylistCategoryPage() {
     console.log(token);
     useEffect(()=>{
         if (token) {
-            axios.get(`https://api.spotify.com/v1/browse/categories/${category_id}`, {
+    //         axios.get(`https://api.spotify.com/v1/browse/categories/${category_id}`, {
+    //           headers: {
+    //             Authorization: `Bearer ${token}`
+    //           }
+    //         })
+            axios.get(`${config.apiDomain}v1/browse/categories/${category_id}`, {
               headers: {
-                Authorization: `Bearer ${token}`
+
               }
             })
             .then(response => {
@@ -38,7 +44,7 @@ function PlaylistCategoryPage() {
 
     return (
       <AppLayout>
-      <div id="main">
+      <div id="library-main">
         <div className="sec" id="sec-id">
           <div className="head-o-sec">
             <div className="head-written">

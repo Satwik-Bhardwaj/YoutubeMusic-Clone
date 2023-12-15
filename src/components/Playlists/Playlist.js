@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { getCookie } from '../../cookieAndSession/cookiesOperator';
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
+import config from '../../AppStateContext/config';
 import './playlist.css'
 import PlaylistsList from './PlaylistsList';
 import AppLayout from '../AppLayout/AppLayout';
@@ -21,12 +22,16 @@ function Playlist() {
         if (token) {
 
           //fetching the details of playlist
-          axios.get(`https://api.spotify.com/v1/playlists/${playlist_id}`, {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
+          // axios.get(`https://api.spotify.com/v1/playlists/${playlist_id}`, {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`
+          //   }
+          // })
+          axios.get(`${config.apiDomain}v1/playlists/${playlist_id}`, {
+            
           })
           .then(response => {
+              console.log(response.data);
               setPlayLists(response.data)
           })
           .catch(error => {
@@ -57,13 +62,13 @@ function Playlist() {
 
     return (
       <AppLayout>
-      <div id="main">
+      <div id="library-main">
         <div className="sec" id="sec-id">
           <div className="head-o-sec">
             <div className="head-written">
               <h1 className="sec-heading">{playlist.name}</h1>
               <p className="sec-disp">{playlist.description}</p>
-              <p className="sec-more">Followers: {formatNumber(playlist.followers.total)} • Owner: {playlist.owner.display_name}</p>
+              <p className="sec-more">Followers: {formatNumber(200000000 /*playlist.followers.total*/)} • Owner: {playlist.owner.display_name}</p>
             </div>
             <div className="more-at-head">
               <div className="more-chips">

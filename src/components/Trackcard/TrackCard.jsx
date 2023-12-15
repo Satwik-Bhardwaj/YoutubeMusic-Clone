@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AppStateContext } from "../../AppStateContext/AppStateContext";
 import axios from "axios";

@@ -8,7 +8,7 @@ const AppLayout = ({children})=>{
             <Header/>
             {children}
             {/* <PlayerOver/> */}
-            <PlayerNavigation/>
+            
         </>
     )
     

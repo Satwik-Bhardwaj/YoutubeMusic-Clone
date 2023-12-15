@@ -1,0 +1,27 @@
+.music-upload-component {
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: 1000;
+    background-color: #00000091;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-upload-component .internal {
+    height: 70%;
+    width: 70%;
+    background-color: #000000;
+    border: 1px solid var(--theme-color-4);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.music-upload-component .upload-form {
+    padding: 10px;
+    display: grid;
+    grid-gap: 10px;
+}

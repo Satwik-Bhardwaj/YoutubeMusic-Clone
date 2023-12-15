@@ -18,6 +18,10 @@ function PlayerNavigation(){
     
 
     useEffect(()=>{
+        if(audioPlayer){
+            if(!audioPlayer.paused) audioPlayer.pause();
+        }
+        
         const player = new Audio("https://learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3");
 
 
@@ -30,8 +34,9 @@ function PlayerNavigation(){
           });
       
         setAudioPlayer(player);
+        // if(!audioPlayer.paused) audioPlayer.
         
-    }, [])
+    }, [appState.player.playNStop, appState.player.musicID])
 
     // to initialize the playing
     useEffect(()=>{
